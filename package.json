@@ -1,0 +1,18 @@
+{
+  "name": "@recon-struct/strix",
+  "module": "./src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@recon-struct/utility-types": "^1.3.4",
+    "@recon-struct/utils": "^1.0.5",
+    "@types/bun": "^1.1.1",
+    "rimraf": "^5.0.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "bun test",
+    "build": "bun build ./src/index.ts --outdir ./dist && tsc"
+  }
+}
