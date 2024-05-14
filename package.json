@@ -15,6 +15,5 @@
   "scripts": {
     "test": "bun test",
     "build": "bun build ./src/index.ts --outdir ./dist && tsc"
-  },
-  "packageManager": "pnpm@9.1.0"
+  }
 }
