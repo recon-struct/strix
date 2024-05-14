@@ -12,19 +12,20 @@ jobs:
         node-version: [20]
     steps:
       - uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          registry-url: "https://npm.pkg.github.com/"
+      - run: bun install --frozen-lockfile
+        env:
+          BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: bun build
+      - run: bun test
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org/'
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm run build
-      - run: pnpm run test
-      # See this issue for more information:
-      # https://github.com/pnpm/pnpm/issues/5894
-      - run: pnpm publish --access public --no-git-checks
+      - run: npm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

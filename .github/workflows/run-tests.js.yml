@@ -8,10 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm test
+          registry-url: "https://npm.pkg.github.com/"
+      - run: bun install --frozen-lockfile
+      - run: bun test
