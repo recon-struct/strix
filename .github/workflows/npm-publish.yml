@@ -18,8 +18,8 @@ jobs:
       - run: bun install
         env:
           BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: bun run build
       - run: bun test
+      - run: bun run build
       - run: bun add -g npm
       - run: npm shrinkwrap
       - run: npm publish --access public
