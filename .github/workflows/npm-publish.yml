@@ -18,7 +18,7 @@ jobs:
       - run: bun install
         env:
           BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: bun build
+      - run: bun run build
       - run: bun test
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
