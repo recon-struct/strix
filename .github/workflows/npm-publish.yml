@@ -20,12 +20,8 @@ jobs:
           BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: bun run build
       - run: bun test
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org/'
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+      - run: bun add -g npm
+      - run: npm shrinkwrap
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
