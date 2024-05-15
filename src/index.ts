@@ -6,8 +6,7 @@ import type {
 } from '@recon-struct/utility-types/dist/object/get-keys'
 import type { GetValue } from '@recon-struct/utility-types/dist/object/get-value'
 import type { CaptureGroup } from '@recon-struct/utility-types/dist/string/utils'
-import getDeepProp from '@recon-struct/utils/dist/object/get-deep-prop'
-import interpolate from '@recon-struct/utils/dist/string/interpolate'
+import { interpolate, getDeepProp } from '@recon-struct/utils'
 
 export type DefaultCaputreGroup = CaptureGroup<'{{', '}}'>
 
