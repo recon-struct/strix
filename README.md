@@ -23,6 +23,26 @@ The `strix` library takes a deeply nested object of string templates and returns
 a function that can be used to interpolate strings. The function takes a key
 corresponding to a template and an object of values to interpolate.
 
+### Templates
+
+String templates are defined as a deeply nested object. The keys are used to
+access the templates, and the values are the templates themselves. The templates
+can contain placeholders in the form of `{{key}}`, where `key` is a variable to
+be interpolated.
+
+```typescript
+const templates = {
+  greeting: 'Hello, {{name}}!',
+  farewell: 'Goodbye, {{name}}!',
+} as const
+```
+
+### Strix function
+
+The `strix` function returns a function that takes a key and an optional object
+of values. It is strongly typed to ensure that the key is a valid key in the
+templates object and that the variables object contains all the required keys.
+
 Using the `as const` assertion is recommended to ensure that the object of
 templates and variables is treated as a readonly object. This enables the string
 interpolation function to provide better type checking and code completion.
@@ -39,6 +59,23 @@ const templates = {
 const t = strix(templates)
 
 const helloWorld = t('greeting', { name: 'world' } as const) // 'Hello, world!'
+```
+
+### Usage of const
+
+The `as const` assertion is used to ensure that the object of templates and
+variables is treated as a readonly object. This enables the string interpolation
+function to provide better type checking and code completion.
+
+You can see in this example that you can achieve better type checking through
+the use of `as const`.
+
+```typescript
+// With `as const`
+const hello1 = t('greeting', { name: 'world' } as const) // 'Hello, ${string}'
+
+// Without `as const`
+const hello2 = t('greeting', { name: 'world' }) // 'Hello, ${string}'
 ```
 
 ## Debugging
