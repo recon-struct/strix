@@ -19,6 +19,17 @@ npm i @recon-struct/strix
 
 ## Usage
 
+The `strix` library takes a deeply nested object of string templates and returns
+a function thta can be used to interpolate strings. The function takes a key
+corresponding to a template and an object of values to interpolate.
+
+Using the `as const` assertion is recommended to ensure that the object of
+templates and variables is treated as a readonly object. This enables the string
+interpolation function to provide better type checking and code completion.
+
+Tools like Github Copilot can use the literal string returned by the
+interpolation function to provide better code completion.
+
 ```typescript
 const templates = {
   greeting: 'Hello, {{name}}!',
