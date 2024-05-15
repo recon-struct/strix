@@ -10,3 +10,22 @@ This library enables string interpolation in TypeScript, allowing you to inspect
 strings before they are compiled. This is useful for debugging, logging, and
 code completion through tools like Github Copilot.
 
+## Installation
+
+```shell
+npm i -D @recon-struct/utility-types
+npm i @recon-struct/strix
+```
+
+## Usage
+
+```typescript
+const templates = {
+  greeting: 'Hello, {name}!',
+  farewell: 'Goodbye, {name}!',
+} as const
+
+const t = strix(templates)
+
+const helloWorld = t('greeting', { name: 'world' } as const) // 'Hello, world!'
+```
