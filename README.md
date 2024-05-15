@@ -21,8 +21,8 @@ npm i @recon-struct/strix
 
 ```typescript
 const templates = {
-  greeting: 'Hello, {name}!',
-  farewell: 'Goodbye, {name}!',
+  greeting: 'Hello, {{name}}!',
+  farewell: 'Goodbye, {{name}}!',
 } as const
 
 const t = strix(templates)
