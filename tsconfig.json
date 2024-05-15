@@ -34,5 +34,7 @@
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts"]
 }

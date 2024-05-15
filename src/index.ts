@@ -6,7 +6,8 @@ import type {
 } from '@recon-struct/utility-types/dist/object/get-keys'
 import type { GetValue } from '@recon-struct/utility-types/dist/object/get-value'
 import type { CaptureGroup } from '@recon-struct/utility-types/dist/string/utils'
-import { getDeepProp, interpolate } from '@recon-struct/utils'
+import getDeepProp from '@recon-struct/utils/dist/object/get-deep-prop'
+import interpolate from '@recon-struct/utils/dist/string/interpolate'
 
 export type DefaultCaputreGroup = CaptureGroup<'{{', '}}'>
 
@@ -64,7 +65,7 @@ const DEFAULT_CAPTURE_GROUP: DefaultCaputreGroup = {
  *        Defaults to DEFAULT_CAPTURE_GROUP.
  * @returns {templateFunction} - The template function.
  */
-const createT = <
+const strix = <
   A extends DeepObject,
   B extends CaptureGroup = DefaultCaputreGroup,
 >(
@@ -98,4 +99,4 @@ const createT = <
   return templateFunction
 }
 
-export default createT
+export default strix
