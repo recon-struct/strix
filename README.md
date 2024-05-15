@@ -20,7 +20,7 @@ npm i @recon-struct/strix
 ## Usage
 
 The `strix` library takes a deeply nested object of string templates and returns
-a function thta can be used to interpolate strings. The function takes a key
+a function that can be used to interpolate strings. The function takes a key
 corresponding to a template and an object of values to interpolate.
 
 Using the `as const` assertion is recommended to ensure that the object of
