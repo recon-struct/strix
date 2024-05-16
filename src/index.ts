@@ -5,10 +5,9 @@ import type {
   GetKeys,
 } from '@recon-struct/utility-types/dist/object/get-keys'
 import type { GetValue } from '@recon-struct/utility-types/dist/object/get-value'
-import type { CaptureGroup } from '@recon-struct/utility-types/dist/string/utils'
 import { interpolate, getDeepProp } from '@recon-struct/utils'
 
-export type DefaultCaputreGroup = CaptureGroup<'{{', '}}'>
+export type DefaultCaputreGroup = { start: '{{', end: '}}' }
 
 /**
  * Extracts captured groups from a string based on a specified capture group pattern.
@@ -21,7 +20,7 @@ export type DefaultCaputreGroup = CaptureGroup<'{{', '}}'>
  */
 export type Capture<
   A extends DeepObject | AnyPrimitive,
-  B extends CaptureGroup = DefaultCaputreGroup,
+  B extends { start: string, end: string } = DefaultCaputreGroup,
   C extends string = never,
 > = A extends `${string}${B['start']}${infer D}${B['end']}${infer E}`
   ? Capture<E, B, C | D>
@@ -38,7 +37,7 @@ export type Capture<
  */
 export type Interpolation<
   A extends DeepObject | AnyPrimitive,
-  B extends CaptureGroup = DefaultCaputreGroup,
+  B extends { start: string, end: string } = DefaultCaputreGroup,
   C extends AnyObject<Capture<A, B>, string> = AnyObject<Capture<A, B>, string>,
   D extends DeepObject | AnyPrimitive = A,
   E extends Capture<A, B> = Capture<A, B>,
@@ -66,7 +65,7 @@ const DEFAULT_CAPTURE_GROUP: DefaultCaputreGroup = {
  */
 const strix = <
   A extends DeepObject,
-  B extends CaptureGroup = DefaultCaputreGroup,
+  B extends { start: string, end: string } = DefaultCaputreGroup,
 >(
   templates: A,
   captureGroup: B = DEFAULT_CAPTURE_GROUP as B,

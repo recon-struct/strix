@@ -1,9 +1,9 @@
 {
   "name": "@recon-struct/strix",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "devDependencies": {
-    "@recon-struct/utility-types": "^1.3.4",
-    "@recon-struct/utils": "^1.0.9",
+    "@recon-struct/utility-types": "^1.3.6",
+    "@recon-struct/utils": "^1.1.1",
     "@types/bun": "^1.1.2",
     "rimraf": "^5.0.7",
     "typedoc": "^0.25.13"
