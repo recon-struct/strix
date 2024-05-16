@@ -72,10 +72,10 @@ the use of `as const`.
 
 ```typescript
 // With `as const`
-const hello1 = t('greeting', { name: 'world' } as const) // 'Hello, ${string}'
+const hello1 = t('greeting', { name: 'world' } as const) // 'Hello, world!'
 
 // Without `as const`
-const hello2 = t('greeting', { name: 'world' }) // 'Hello, ${string}'
+const hello2 = t('greeting', { name: 'world' }) // 'Hello, ${string}!'
 ```
 
 ## Debugging
