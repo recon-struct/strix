@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'bun:test'
-import createT from './index'
+import strix from './index'
 
-describe('createT', () => {
+describe('strix', () => {
   it('It should kick ass and take names', () => {
     const expected = 'Kick ass and take names.'
-    const t = createT({
+    const t = strix({
       motto: 'Kick {{this}} and take {{that}}.',
     } as const)
     const actual = t('motto', { this: 'ass', that: 'names' } as const)
@@ -14,7 +14,7 @@ describe('createT', () => {
 
   it('It should allow for setting different capture settings', () => {
     const expected = 'We are the champions!'
-    const t = createT(
+    const t = strix(
       {
         anthem: 'We are the ::title::!',
       } as const,
@@ -27,7 +27,7 @@ describe('createT', () => {
 
   it('It should support templates that contain no variables', () => {
     const expected = 'I am a template string'
-    const t = createT({
+    const t = strix({
       template: 'I am a template string',
     } as const)
     const actual = t('template')
@@ -45,7 +45,7 @@ describe('createT', () => {
     const cb = 'cb'
     const cc = 'cc'
 
-    const t = createT({
+    const t = strix({
       a: {
         a: 'aa',
         b: 'ab',
