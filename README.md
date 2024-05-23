@@ -10,6 +10,14 @@ This library enables string interpolation in TypeScript, allowing you to inspect
 strings before they are compiled. This is useful for debugging, logging, and
 code completion through tools like Github Copilot.
 
+## Links
+
+- [Documentation](https://recon-struct.github.io/strix/)
+
+### Blog Series
+
+- [Strix Announcement](https://blog.hox.io/articles/2024-05-20)
+
 ## Installation
 
 ```shell
