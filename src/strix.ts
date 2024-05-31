@@ -1,7 +1,7 @@
 import type { AnyKey, AnyStringish, GetPathValue, GetPaths, InterpolationVariable, Join, Override, Split } from '@recon-struct/utility-types'
 import type { AnyObject } from '@recon-struct/utility-types/dist/any/any-object'
 import type { AnyPrimitive } from '@recon-struct/utility-types/dist/any/any-primitive'
-import type { HelperCaptureGroup } from '@recon-struct/utility-types/dist/helper/capture-group'
+import type { CaptureGroup } from '@recon-struct/utility-types/dist/helper/capture-group'
 import { interpolate, getDeepProp } from '@recon-struct/utils'
 
 /**
@@ -12,7 +12,7 @@ export interface TemplateManifest {
   [key: AnyKey]: TemplateManifest | AnyStringish
 }
 
-export type DefaultCaptureGroup = HelperCaptureGroup<'{{', '}}'>
+export type DefaultCaptureGroup = CaptureGroup<'{{', '}}'>
 
 export type DefaultSeparator = '.'
 
@@ -27,7 +27,7 @@ export type DefaultSeparator = '.'
  */
 export type Capture<
   A extends TemplateManifest | AnyPrimitive,
-  B extends HelperCaptureGroup = DefaultCaptureGroup,
+  B extends CaptureGroup = DefaultCaptureGroup,
   C extends string = never,
 > = A extends `${string}${B['start']}${infer D}${B['end']}${infer E}`
   ? Capture<E, B, C | D>
@@ -44,7 +44,7 @@ export type Capture<
  */
 export type Interpolation<
   A extends TemplateManifest | AnyPrimitive,
-  B extends HelperCaptureGroup = DefaultCaptureGroup,
+  B extends CaptureGroup = DefaultCaptureGroup,
   C extends AnyObject<Capture<A, B>, InterpolationVariable> = AnyObject<Capture<A, B>, InterpolationVariable>,
   D extends TemplateManifest | AnyPrimitive = A,
   E extends Capture<A, B> = Capture<A, B>,
@@ -54,7 +54,7 @@ export type Interpolation<
     : never
   : D
 
-interface StrixOptions<A extends HelperCaptureGroup = HelperCaptureGroup, B extends string = string>{
+interface StrixOptions<A extends CaptureGroup = CaptureGroup, B extends string = string>{
   captureGroup?: A
   separator?: B
 }
@@ -86,7 +86,7 @@ const DEFAULT_OPTIONS: DefaultOptions= {
  */
 const strix = <
   A extends TemplateManifest,
-  B extends HelperCaptureGroup = DefaultCaptureGroup,
+  B extends CaptureGroup = DefaultCaptureGroup,
   C extends string = DefaultSeparator,
 >(
   templates: A,
