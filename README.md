@@ -21,7 +21,6 @@ code completion through tools like Github Copilot.
 ## Installation
 
 ```shell
-npm i -D @recon-struct/utility-types
 npm i @recon-struct/strix
 ```
 
