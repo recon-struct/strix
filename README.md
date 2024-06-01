@@ -85,22 +85,3 @@ const hello1 = t('greeting', { name: 'world' } as const) // 'Hello, world!'
 // Without `as const`
 const hello2 = t('greeting', { name: 'world' }) // 'Hello, ${string}!'
 ```
-
-## Debugging
-
-If you are using pnpm or any other package manager that hoists dependencies, or
-if you are using symlinked packages, you may need to add the following to your
-`tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "preserveSymlinks": true
-  }
-}
-```
-
-Due to the way that TypeScript resolves modules, the `strix` library may not be
-able to find the templates if they are in a different package or if the package
-is symlinked. Setting `preserveSymlinks` to `true` will ensure that the
-templates and types are found.
